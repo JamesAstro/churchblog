@@ -1,0 +1,220 @@
+@import "tailwindcss";
+
+:root {
+  /* Warm gold divine palette */
+  --background: rgb(250, 249, 244);
+  --foreground: rgb(44, 38, 33);
+
+  --card: rgb(247, 244, 238);
+  --card-foreground: rgb(44, 38, 33);
+
+  --popover: rgb(250, 249, 244);
+  --popover-foreground: rgb(44, 38, 33);
+
+  /* Warm gold accent */
+  --primary: rgb(223, 153, 32);
+  --primary-foreground: rgb(250, 249, 244);
+
+  --secondary: rgb(236, 233, 223);
+  --secondary-foreground: rgb(73, 64, 54);
+
+  --muted: rgb(231, 227, 218);
+  --muted-foreground: rgb(126, 115, 103);
+
+  --accent: rgb(245, 237, 224);
+  --accent-foreground: rgb(156, 107, 22);
+
+  --destructive: rgb(239, 67, 67);
+  --destructive-foreground: rgb(250, 249, 244);
+
+  --border: rgb(226, 222, 207);
+  --input: rgb(226, 222, 207);
+  --ring: rgb(223, 153, 32);
+
+  --radius: 0.5rem;
+
+  /* Shadows */
+  --shadow-soft: 0 2px 20px -4px hsl(30 15% 15% / 0.08);
+  --shadow-card: 0 4px 30px -8px hsl(30 15% 15% / 0.1);
+  --shadow-elevated: 0 12px 40px -12px hsl(30 15% 15% / 0.15);
+
+  /* Gradients */
+  --gradient-warm: linear-gradient(
+    135deg,
+    hsl(45 40% 97%) 0%,
+    hsl(45 35% 93%) 100%
+  );
+  --gradient-accent: linear-gradient(
+    135deg,
+    hsl(38 75% 50%) 0%,
+    hsl(45 80% 45%) 100%
+  );
+  --gradient-hero: linear-gradient(
+    180deg,
+    hsl(45 40% 97%) 0%,
+    hsl(38 35% 94%) 100%
+  );
+
+  --sidebar-background: rgb(250, 249, 244);
+  --sidebar-foreground: rgb(73, 64, 54);
+  --sidebar-primary: rgb(223, 153, 32);
+  --sidebar-primary-foreground: rgb(250, 249, 244);
+  --sidebar-accent: rgb(236, 233, 223);
+  --sidebar-accent-foreground: rgb(73, 64, 54);
+  --sidebar-border: rgb(226, 222, 207);
+  --sidebar-ring: rgb(223, 153, 32);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-playfair: var(--font-playfair);
+  --font-sourcesans: var(--font-sourcesans);
+}
+
+@theme {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+}
+
+/* @media (prefers-color-scheme: dark) {
+  :root {
+    --background: #0a0a0a;
+    --foreground: #ededed;
+  }
+} */
+* {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sourcesans);
+}
+
+button,
+a {
+  cursor: pointer;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: var(--font-playfair);
+}
+
+.previewHeading {
+  font-family: var(--font-sourcesans) !important;
+}
+/* Print styles */
+@media print {
+  body {
+    background: white !important;
+    color: black !important;
+    font-size: 12pt;
+    line-height: 1.6;
+  }
+
+  nav,
+  footer,
+  .no-print,
+  button,
+  .share-buttons {
+    display: none !important;
+  }
+
+  a {
+    color: black !important;
+    text-decoration: underline;
+  }
+
+  h1,
+  h2,
+  h3 {
+    page-break-after: avoid;
+  }
+
+  img {
+    max-width: 100% !important;
+    page-break-inside: avoid;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  article {
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+  }
+}
+
+.print-only {
+  display: none;
+}
+
+/* Smooth animations */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slide-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.5s ease-out forwards;
+}
+
+.animate-slide-up {
+  animation: slide-up 0.6s ease-out forwards;
+}
+
+.stagger-1 {
+  animation-delay: 0.1s;
+}
+.stagger-2 {
+  animation-delay: 0.2s;
+}
+.stagger-3 {
+  animation-delay: 0.3s;
+}
+.stagger-4 {
+  animation-delay: 0.4s;
+}
