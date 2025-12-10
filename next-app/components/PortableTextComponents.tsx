@@ -41,7 +41,7 @@ export const PortableTextComponents: PTComponents = {
   types: {
     image: ({ value }: { value: ImageBlock }) => {
       if (!value?.asset?._ref) return null;
-      console.log("value.asset._ref", value.asset._ref);
+
       const [id, width, format] = value.asset._ref
         .replace("image-", "")
         .split("-");

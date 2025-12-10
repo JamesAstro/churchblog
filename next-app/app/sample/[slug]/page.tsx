@@ -8,30 +8,23 @@ interface Props {
 }
 
 export default async function BlogPage({ params, searchParams }: Props) {
-  console.log("paramsssss", await params);
-  console.log("searchParams", await searchParams);
   const { slug } = await params;
   const { preview } = await searchParams;
 
-  console.log("slugsssss", slug);
-  console.log("previewsss", preview);
   //   const isPreview =
   //     cookies().get("sanity-preview")?.value === "true" ||
   //     searchParams.preview === "true";
   //   const isPreview = true;
   const isPreview = preview === "true";
 
-  console.log("isPreview", isPreview);
-
   const client = isPreview ? previewClient : sanityClient;
-  console.log("client", client);
+
   const query = `*[_type=="post" && slug.current == $slug][0]{
     title,
     body
   }`;
 
   const post = await client.fetch(query, { slug });
-  console.log("post", post);
 
   if (!post) return <p>Post not found</p>;
 

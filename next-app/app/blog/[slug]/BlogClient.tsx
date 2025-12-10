@@ -11,10 +11,7 @@ import { usePosts } from "@/hooks/usePost";
 import BlogCard from "@/components/BlogCard";
 
 const BlogClient = ({ post }: { post?: any }) => {
-  console.log("BlogClient post", post);
   const { data: posts, isLoading, isError } = usePosts();
-
-  console.log("postszzzzzzz", posts);
 
   const [currentUrl, setCurrentUrl] = useState<string>("");
 

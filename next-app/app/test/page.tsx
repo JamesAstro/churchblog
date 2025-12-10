@@ -55,8 +55,6 @@ export default function Home() {
     queryFn: fetchPosts,
   });
 
-  console.log("posts", posts);
-
   if (isLoading) return <p>Loading...</p>;
 
   return (

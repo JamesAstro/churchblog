@@ -1,6 +1,6 @@
 "use client";
 
-import { Search, User } from "lucide-react";
+import { Mailbox, Search, User } from "lucide-react";
 
 import Link from "next/link";
 import { Button } from "./ui/button";
@@ -8,13 +8,20 @@ import Wrapper from "./Wrapper";
 import { useState } from "react";
 import SearchModal from "./SearchModal";
 import { cn } from "@/lib/utils";
+import NewsLetterFormModal from "./NewsLetterFormModal";
+import SearchPostModal from "./SearchPostModal";
 
 const Header = ({ className }: { className?: string }) => {
   const [isSearchOpen, setIsSearchOpen] = useState(false);
+  const [isNewsletterFormOpen, setIsNewsletterFormOpen] = useState(false);
 
   const onSearchClick = () => {
     setIsSearchOpen(true);
   };
+  const onSubscribeClick = () => {
+    setIsNewsletterFormOpen(true);
+  };
+
   return (
     <>
       <header
@@ -61,28 +68,27 @@ const Header = ({ className }: { className?: string }) => {
               >
                 <Search className="h-5 w-5" />
               </Button>
-              <Link href="/auth/login">
-                <Button
-                  variant="editorial"
-                  size="sm"
-                  className="hidden sm:flex"
-                >
-                  <User className="h-4 w-4 mr-2" />
-                  Sign Up
-                </Button>
-              </Link>
-              <Link href="/auth/login" className="sm:hidden">
-                <Button variant="ghost" size="icon">
-                  <User className="h-5 w-5" />
-                </Button>
-              </Link>
+
+              <Button
+                variant="editorial"
+                size="sm"
+                onClick={onSubscribeClick}
+                className="flex focus-within:outline-0! focus-visible:ring-0!  focus-visible:outline-0!"
+              >
+                <Mailbox className="h-4 w-4 mr-1" />
+                Subscribe
+              </Button>
             </div>
           </div>
         </Wrapper>
       </header>
-      <SearchModal
+      <SearchPostModal
         isOpen={isSearchOpen}
         onClose={() => setIsSearchOpen(false)}
+      />
+      <NewsLetterFormModal
+        isOpen={isNewsletterFormOpen}
+        onClose={() => setIsNewsletterFormOpen(false)}
       />
     </>
   );

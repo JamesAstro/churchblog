@@ -13,9 +13,9 @@ import BlogCard from "@/components/BlogCard";
 
 export default function BlogPost({ params }: { params: any }) {
   const slugs = use(params) as { slug: string };
-  console.log("slugsss", slugs);
+
   const post = blogPosts.find((p) => p.slug === slugs.slug);
-  console.log("postssss", post);
+
   const [currentUrl, setCurrentUrl] = useState<string>("");
   useEffect(() => {
     if (typeof window !== "undefined") {

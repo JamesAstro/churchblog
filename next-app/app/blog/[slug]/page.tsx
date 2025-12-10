@@ -23,15 +23,11 @@ export default async function BlogPost({ params, searchParams }: Props) {
   const { slug } = await params;
   const { preview } = await searchParams;
 
-  console.log("slugsssss", slug);
-  console.log("previewsss", preview);
   //   const isPreview =
   //     cookies().get("sanity-preview")?.value === "true" ||
   //     searchParams.preview === "true";
   //   const isPreview = true;
   const isPreview = preview === "true";
-
-  console.log("isPreview", isPreview);
 
   const client = isPreview ? previewClient : sanityClient;
 
@@ -54,7 +50,6 @@ export default async function BlogPost({ params, searchParams }: Props) {
   }`;
 
   const post = await client.fetch(query, { slug });
-  console.log("post", post);
 
   // const post = blogPosts.find((p) => p.slug === slugs.slug);
 
