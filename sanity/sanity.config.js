@@ -10,6 +10,10 @@ export default defineConfig({
   projectId: process.env.SANITY_STUDIO_PROJECT_ID,
   dataset: process.env.SANITY_STUDIO_DATASET,
 
+  env: {
+    NEXT_PUBLIC_BASE_URL: process.env.NEXT_PUBLIC_BASE_URL,
+  },
+
   plugins: [structureTool(), visionTool()],
 
   schema: {
