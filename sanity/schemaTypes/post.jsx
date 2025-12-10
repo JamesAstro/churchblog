@@ -1,5 +1,4 @@
-const baseUrl = import.meta.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'
-
+const baseUrl = process.env.SANITY_STUDIO_BASE_URL || 'http://localhost:3000'
 export default {
   name: 'post',
   title: 'Post',
