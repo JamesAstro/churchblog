@@ -2,6 +2,17 @@ import { NextRequest, NextResponse } from "next/server";
 import { supabase } from "@/lib/supabase";
 import client from "@sendgrid/client";
 
+if (
+  !process.env.NEXT_PUBLIC_SUPABASE_URL ||
+  !process.env.NEXT_PUBLIC_SUPABASE_SERVICE_ROLE_KEY
+) {
+  throw new Error("Missing Supabase environment variables");
+}
+
+if (!process.env.SENDGRID_API_KEY || !process.env.SENDGRID_LIST_ID) {
+  throw new Error("Missing SendGrid environment variables");
+}
+
 client.setApiKey(process.env.SENDGRID_API_KEY!);
 
 const LIST_ID = process.env.SENDGRID_LIST_ID!;
