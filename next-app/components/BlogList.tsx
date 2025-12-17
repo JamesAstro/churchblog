@@ -7,12 +7,22 @@ const BlogList = ({
   className,
   selectedCategory,
   setSelectedCategory,
-  regularPosts,
+  // regularPosts,
+  posts,
+  currentPage,
+  totalPages,
+  onPrev,
+  onNext,
 }: {
   className?: string;
   selectedCategory?: string | null;
   setSelectedCategory?: (category: string | null) => void;
-  regularPosts?: any;
+  // regularPosts?: any;
+  posts: any[];
+  currentPage: number;
+  totalPages: number;
+  onPrev: () => void;
+  onNext: () => void;
 }) => {
   return (
     <div className="w-full pb-12">
@@ -41,18 +51,38 @@ const BlogList = ({
 
         {/* Blog Grid */}
 
-        {regularPosts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
-            {regularPosts?.map((post: any, index: number) => (
-              <div
-                key={post._id}
-                className="animate-fade-in h-full"
-                style={{ animationDelay: `${index * 0.1}s` }}
-              >
-                <BlogCard post={post} className="h-full" />
-              </div>
-            ))}
-          </div>
+        {posts.length > 0 ? (
+          <>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+              {posts?.map((post: any, index: number) => (
+                <div
+                  key={post._id}
+                  className="animate-fade-in h-full"
+                  style={{ animationDelay: `${index * 0.1}s` }}
+                >
+                  <BlogCard post={post} className="h-full" />
+                </div>
+              ))}
+            </div>
+            {/* Pagination */}
+            <div className="flex justify-center items-center gap-4 mt-12">
+              {currentPage > 1 && (
+                <Button variant="outline" size="sm" onClick={onPrev}>
+                  ← Prev
+                </Button>
+              )}
+
+              <span className="text-sm font-medium">
+                Page {currentPage} of {totalPages}
+              </span>
+
+              {currentPage < totalPages && (
+                <Button variant="outline" size="sm" onClick={onNext}>
+                  Next →
+                </Button>
+              )}
+            </div>
+          </>
         ) : (
           <div className="w-full text-center flex py-5 h-[200px] border border-dashed border-primary/70  justify-center items-center">
             <p>No post for this category.</p>

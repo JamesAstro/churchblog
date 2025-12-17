@@ -49,18 +49,18 @@ export default {
       options: {hotspot: true},
       validation: (Rule) => Rule.required(),
     },
-    {
-      name: 'externalImage',
-      title: 'External Image URL (Optional)',
-      type: 'url',
-      description: 'Paste public image link (Facebook, Google Drive, OneDrive)',
-    },
-    {
-      name: 'videoEmbed',
-      title: 'Video URL (Optional)',
-      type: 'url',
-      description: 'Paste public YouTube/Vimeo/Facebook video link. Make sure the video is public.',
-    },
+    // {
+    //   name: 'externalImage',
+    //   title: 'External Image URL (Optional)',
+    //   type: 'url',
+    //   description: 'Paste public image link (Facebook, Google Drive, OneDrive)',
+    // },
+    // {
+    //   name: 'videoEmbed',
+    //   title: 'Video URL (Optional)',
+    //   type: 'url',
+    //   description: 'Paste public YouTube/Vimeo/Facebook video link. Make sure the video is public.',
+    // },
     {
       name: 'category',
       title: 'Category',
